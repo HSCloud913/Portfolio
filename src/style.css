@@ -1,0 +1,19 @@
+:root {
+    --data-background-color: #FFFFFF;
+    --data-text-color: #2B2B2B;
+}
+
+[data-theme='dark'] {
+    --data-background-color: #2B2B2B;
+    --data-text-color: #FFFFFF;
+}
+
+[data-theme='light'] {
+    --data-background-color: #FFFFFF;
+    --data-text-color: #2B2B2B;
+}
+
+body {
+    background-color: var(--data-background-color, #FFFFFF);
+    color: var(--data-text-color);
+}
