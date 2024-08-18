@@ -20,7 +20,7 @@ const App: React.FC = () => {
                 <GlobalStyle/>
 
                 <Router>
-                    <Header toggleTheme={toggleTheme} />
+                    <Header theme={theme} toggleTheme={toggleTheme}/>
                     <main>
                         <Routes>
                             <Route path="/" element={<Home />} />

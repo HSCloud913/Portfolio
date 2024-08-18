@@ -1,154 +1,107 @@
-// import React from 'react';
-// import {
-//     HeaderMain,
-//     HeaderContainer,
-//     HeaderNav,
-//     HexagonContainer,
-//     Hexagon,
-//     HexagonLink,
-//     ToggleTheme,
-//     Checkbox,
-//     CheckboxLabel,
-//     Ball
-// } from './HeaderStyle.tsx';
-//
-// interface HeaderProps {
-//     theme: 'light' | 'dark';
-//     toggleTheme: () => void;
-// }
-//
-// const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
-//     return (
-//         <HeaderMain theme={theme}>
-//             <HeaderContainer>
-//                 <ToggleTheme>
-//                     <Checkbox
-//                         type="checkbox"
-//                         id="checkbox"
-//                         checked={theme === 'dark'}
-//                         onChange={toggleTheme}
-//                     />
-//                     <CheckboxLabel htmlFor="checkbox">
-//                         <i className="fas fa-moon fa-custom-size"></i>
-//                         <i className="fas fa-sun fa-custom-size"></i>
-//                         <Ball theme={theme} />
-//                     </CheckboxLabel>
-//                 </ToggleTheme>
-//
-//                 <HeaderNav>
-//                     <ul>
-//                         <li>
-//                             <HexagonContainer>
-//                                 <Hexagon activate={true}>
-//                                     <HexagonLink href="/" activate={true} theme={theme}>
-//                                         <i className="fas fa-home fa-2x"></i>
-//                                     </HexagonLink>
-//                                 </Hexagon>
-//                             </HexagonContainer>
-//                         </li>
-//                         <li>
-//                             <HexagonContainer>
-//                                 <Hexagon>
-//                                     <HexagonLink href="/user" theme={theme}>
-//                                         <i className="fas fa-user fa-2x"></i>
-//                                     </HexagonLink>
-//                                 </Hexagon>
-//                             </HexagonContainer>
-//                         </li>
-//                         <li>
-//                             <HexagonContainer>
-//                                 <Hexagon>
-//                                     <HexagonLink href="#2" theme={theme}>
-//                                         <i className="fas fa-building fa-2x"></i>
-//                                     </HexagonLink>
-//                                 </Hexagon>
-//                             </HexagonContainer>
-//                         </li>
-//                         <li>
-//                             <HexagonContainer>
-//                                 <Hexagon>
-//                                     <HexagonLink href="#2" theme={theme}>
-//                                         <i className="fas fa-code fa-2x"></i>
-//                                     </HexagonLink>
-//                                 </Hexagon>
-//                             </HexagonContainer>
-//                         </li>
-//                         <li>
-//                             <HexagonContainer>
-//                                 <Hexagon>
-//                                     <HexagonLink href="#2" theme={theme}>
-//                                         <i className="fas fa-layer-group fa-2x"></i>
-//                                     </HexagonLink>
-//                                 </Hexagon>
-//                             </HexagonContainer>
-//                         </li>
-//                         <li>
-//                             <HexagonContainer>
-//                                 <Hexagon>
-//                                     <HexagonLink href="#2" theme={theme}>
-//                                         <i className="fas fa-globe-asia fa-2x"></i>
-//                                     </HexagonLink>
-//                                 </Hexagon>
-//                             </HexagonContainer>
-//                         </li>
-//                     </ul>
-//                 </HeaderNav>
-//             </HeaderContainer>
-//         </HeaderMain>
-//     );
-// };
-//
-// export default Header;
-
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
+import {
+    HeaderMain,
+    HeaderContainer,
+    HeaderNav,
+    HexagonContainer,
+    Hexagon,
+    HexagonLink,
+    ToggleTheme
+} from './HeaderStyle.tsx';
 
 interface HeaderProps {
+    theme: 'light' | 'dark';
     toggleTheme: () => void;
 }
 
-const HeaderContainer = styled.header`
-    display: flex;
-    justify-content: center;
-    background-color: ${(props) => props.theme.navBackground};
-    padding: 1rem;
-`;
+const Header: React.FC<HeaderProps> = ({theme, toggleTheme}) => {
+    const [activeIndex, setActiveIndex] = useState<number>(0);
 
-const Nav = styled.nav`
-    display: flex;
-    gap: 1rem;
-`;
+    const handleClick = (index: number) => {
+        setActiveIndex(index);
+    };
 
-const NavLink = styled(Link)`
-    color: ${(props) => props.theme.linkColor};
-    text-decoration: none;
-    font-size: 1.2rem;
-
-    &:hover {
-        text-decoration: underline;
-    }
-`;
-
-const ThemeToggleButton = styled.button`
-    background: none;
-    border: none;
-    color: ${(props) => props.theme.linkColor};
-    cursor: pointer;
-    font-size: 1rem;
-`;
-
-const Header: React.FC<HeaderProps> = ({ toggleTheme }) => {
     return (
-        <HeaderContainer>
-            <Nav>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/user">User</NavLink>
-            </Nav>
-            <ThemeToggleButton onClick={toggleTheme}>
-                Toggle Theme
-            </ThemeToggleButton>
-        </HeaderContainer>
+        <HeaderMain>
+            <HeaderContainer>
+                <ToggleTheme onClick={() => toggleTheme()}>
+                    {theme == 'light' && <i className="fas fa-sun fa-custom-size"/>}
+                    {theme == 'dark' && <i className="fas fa-moon fa-custom-size"/>}
+                </ToggleTheme>
+
+                <HeaderNav>
+                    <ul>
+                        <li>
+                            <HexagonContainer>
+                                <Hexagon activate={activeIndex === 0} theme={theme}>
+                                    <Link to="/" onClick={() => handleClick(0)}>
+                                        <HexagonLink activate={activeIndex === 0} theme={theme}>
+                                            <i className="fas fa-home fa-2x"></i>
+                                        </HexagonLink>
+                                    </Link>
+                                </Hexagon>
+                            </HexagonContainer>
+                        </li>
+                        <li>
+                            <HexagonContainer>
+                                <Hexagon activate={activeIndex === 1} theme={theme}>
+                                    <Link to="/user" onClick={() => handleClick(1)}>
+                                        <HexagonLink activate={activeIndex === 1} theme={theme}>
+                                            <i className="fas fa-user fa-2x"></i>
+                                        </HexagonLink>
+                                    </Link>
+                                </Hexagon>
+                            </HexagonContainer>
+                        </li>
+                        <li>
+                            <HexagonContainer>
+                                <Hexagon activate={activeIndex === 2} theme={theme}>
+                                    <Link to="/" onClick={() => handleClick(2)}>
+                                        <HexagonLink activate={activeIndex === 2} theme={theme}>
+                                            <i className="fas fa-building fa-2x"></i>
+                                        </HexagonLink>
+                                    </Link>
+                                </Hexagon>
+                            </HexagonContainer>
+                        </li>
+                        <li>
+                            <HexagonContainer>
+                                <Hexagon activate={activeIndex === 3} theme={theme}>
+                                    <Link to="/" onClick={() => handleClick(3)}>
+                                        <HexagonLink activate={activeIndex === 3} theme={theme}>
+                                            <i className="fas fa-code fa-2x"></i>
+                                        </HexagonLink>
+                                    </Link>
+                                </Hexagon>
+                            </HexagonContainer>
+                        </li>
+                        <li>
+                            <HexagonContainer>
+                                <Hexagon activate={activeIndex === 4} theme={theme}>
+                                    <Link to="/" onClick={() => handleClick(4)}>
+                                        <HexagonLink activate={activeIndex === 4} theme={theme}>
+                                            <i className="fas fa-layer-group fa-2x"></i>
+                                        </HexagonLink>
+                                    </Link>
+                                </Hexagon>
+                            </HexagonContainer>
+                        </li>
+                        <li>
+                            <HexagonContainer>
+                                <Hexagon activate={activeIndex === 5} theme={theme}>
+                                    <Link to="/" onClick={() => handleClick(5)}>
+                                        <HexagonLink activate={activeIndex === 5} theme={theme}>
+                                            <i className="fas fa-globe-asia fa-2x"></i>
+                                        </HexagonLink>
+                                    </Link>
+                                </Hexagon>
+                            </HexagonContainer>
+                        </li>
+                    </ul>
+                </HeaderNav>
+            </HeaderContainer>
+        </HeaderMain>
     );
 };
 

@@ -1,26 +1,25 @@
 import styled from 'styled-components';
 
-interface HeaderProps {
-    theme: 'light' | 'dark';
-}
-
 interface HexagonProps {
     activate?: boolean;
     theme: 'light' | 'dark';
 }
 
-export const HeaderMain = styled.header<HeaderProps>`
+export const HeaderMain = styled.header`
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 10000;
     padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: ${(props) => props.theme.navBackground};
+    opacity: 0.85;
 `;
 
 export const HeaderContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 0 20px;
 `;
@@ -46,7 +45,7 @@ export const HeaderNav = styled.nav`
             align-items: center;
 
             &:last-child {
-                margin-right: 50px;
+                margin-right: 80px;
             }
         }
     }
@@ -59,7 +58,9 @@ export const HexagonContainer = styled.div`
 export const Hexagon = styled.div<HexagonProps>`
     width: calc(60px * 0.645);
     height: 60px;
-    background-image: linear-gradient(90deg, #4e54c811, #8f94fb11);
+    background-image: ${(props) => props.theme === 'light'
+            ? 'linear-gradient(90deg, #4e54c844, #8f94fb44)'
+            : 'linear-gradient(90deg, #4e54c822, #8f94fb22)'};
     border-radius: calc(60px / 10);
     transition: transform 400ms ease;
     position: relative;
@@ -68,7 +69,7 @@ export const Hexagon = styled.div<HexagonProps>`
         background-image: linear-gradient(90deg, #4e54c8, #8f94fb);
         transform: rotate(30deg);
 
-        a {
+        div {
             color: #ffffff;
             transform: rotate(-30deg);
         }
@@ -102,14 +103,14 @@ export const Hexagon = styled.div<HexagonProps>`
     `}
 `;
 
-export const HexagonLink = styled.a<HexagonProps>`
+export const HexagonLink = styled.div<HexagonProps>`
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
     text-decoration: none;
-    color: ${(props) => props.activate ? "#ffffff" : "#ffffff99"};
+    color: ${(props) => props.activate ? "#ffffff" : props.theme === 'light' ? "#ffffffdd" : "#ffffff99"};
     position: relative;
     z-index: 1;
     transition: all 400ms ease;
@@ -117,25 +118,8 @@ export const HexagonLink = styled.a<HexagonProps>`
 
 export const ToggleTheme = styled.div`
     display: flex;
-    align-items: center;
-`;
-
-export const Checkbox = styled.input`
-    opacity: 0;
-    position: absolute;
-`;
-
-export const CheckboxLabel = styled.label<HeaderProps>`
-    background-color: #111;
-    width: 75px;
-    height: 39px;
-    border-radius: 50px;
-    position: relative;
-    padding: 5px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+    margin-right: 30px;
 
     .fa-moon {
         color: #f1c40f;
@@ -148,15 +132,4 @@ export const CheckboxLabel = styled.label<HeaderProps>`
     .fa-custom-size {
         font-size: 25px;
     }
-`;
-
-export const Ball = styled.div<HeaderProps>`
-    background-color: #fff;
-    width: 33px;
-    height: 33px;
-    position: absolute;
-    top: 3px;
-    left: ${(props) => (props.theme === 'dark' ? '38px' : '3px')};
-    border-radius: 50%;
-    transition: left 0.2s linear;
 `;

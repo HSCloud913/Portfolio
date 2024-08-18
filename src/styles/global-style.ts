@@ -16,6 +16,11 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         background-color: ${(props) => props.theme.background};
     }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
 `;
 
 export default GlobalStyle;
