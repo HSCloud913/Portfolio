@@ -1,31 +1,34 @@
-// import { useState } from 'react'
-import React, { useState, useEffect } from 'react'
-import Header from './components/header/Header.tsx'
-import './style.css'
-
+import React, {useState} from 'react';
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {ThemeProvider} from "styled-components"
+import GlobalStyle from './styles/global-style.ts'
+import {lightTheme, darkTheme} from './styles/themes.ts'
+import Header from './components/Header/Header.tsx'
+import Home from './pages/Home.tsx'
+import User from './pages/User.tsx'
 
 const App: React.FC = () => {
-    const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    });
-
-    useEffect(() => {
-        document.documentElement.setAttribute('data-theme', theme);
-    }, [theme]);
+    const [theme, setTheme] = useState<'light' | 'dark'>(() => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
     const toggleTheme = () => {
         setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-    }
+    };
 
     return (
         <>
+            <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+                <GlobalStyle/>
 
-            <div>
-                <button onClick={toggleTheme}>
-                    Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
-                </button>
-            </div>
-
+                <Router>
+                    <Header toggleTheme={toggleTheme} />
+                    <main>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/user" element={<User />} />
+                        </Routes>
+                    </main>
+                </Router>
+            </ThemeProvider>
         </>
     )
 }
