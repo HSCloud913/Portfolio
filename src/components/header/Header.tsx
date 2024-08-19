@@ -2,12 +2,13 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {
     HeaderMain,
-    HeaderContainer,
+    HeaderTitle,
     HeaderNav,
     HexagonContainer,
     Hexagon,
     HexagonLink,
-    ToggleTheme
+    ToggleTheme,
+    MobileSidebar
 } from './HeaderStyle.tsx';
 
 interface HeaderProps {
@@ -17,91 +18,121 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({theme, toggleTheme}) => {
     const [activeIndex, setActiveIndex] = useState<number>(0);
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
     const handleClick = (index: number) => {
         setActiveIndex(index);
+        setIsMenuOpen(false);
     };
 
-    return (
-        <HeaderMain>
-            <HeaderContainer>
-                <ToggleTheme onClick={() => toggleTheme()}>
-                    {theme == 'light' && <i className="fas fa-sun fa-custom-size"/>}
-                    {theme == 'dark' && <i className="fas fa-moon fa-custom-size"/>}
-                </ToggleTheme>
+    const items = ['home', 'about', 'career', 'skills', 'project', 'contact'];
 
-                <HeaderNav>
-                    <ul>
-                        <li>
-                            <HexagonContainer>
-                                <Hexagon activate={activeIndex === 0} theme={theme}>
-                                    <Link to="/" onClick={() => handleClick(0)}>
-                                        <HexagonLink activate={activeIndex === 0} theme={theme}>
-                                            <i className="fas fa-home fa-2x"></i>
-                                        </HexagonLink>
-                                    </Link>
-                                </Hexagon>
-                            </HexagonContainer>
-                        </li>
-                        <li>
-                            <HexagonContainer>
-                                <Hexagon activate={activeIndex === 1} theme={theme}>
-                                    <Link to="/user" onClick={() => handleClick(1)}>
-                                        <HexagonLink activate={activeIndex === 1} theme={theme}>
-                                            <i className="fas fa-user fa-2x"></i>
-                                        </HexagonLink>
-                                    </Link>
-                                </Hexagon>
-                            </HexagonContainer>
-                        </li>
-                        <li>
-                            <HexagonContainer>
-                                <Hexagon activate={activeIndex === 2} theme={theme}>
-                                    <Link to="/" onClick={() => handleClick(2)}>
-                                        <HexagonLink activate={activeIndex === 2} theme={theme}>
-                                            <i className="fas fa-building fa-2x"></i>
-                                        </HexagonLink>
-                                    </Link>
-                                </Hexagon>
-                            </HexagonContainer>
-                        </li>
-                        <li>
-                            <HexagonContainer>
-                                <Hexagon activate={activeIndex === 3} theme={theme}>
-                                    <Link to="/" onClick={() => handleClick(3)}>
-                                        <HexagonLink activate={activeIndex === 3} theme={theme}>
-                                            <i className="fas fa-code fa-2x"></i>
-                                        </HexagonLink>
-                                    </Link>
-                                </Hexagon>
-                            </HexagonContainer>
-                        </li>
-                        <li>
-                            <HexagonContainer>
-                                <Hexagon activate={activeIndex === 4} theme={theme}>
-                                    <Link to="/" onClick={() => handleClick(4)}>
-                                        <HexagonLink activate={activeIndex === 4} theme={theme}>
-                                            <i className="fas fa-layer-group fa-2x"></i>
-                                        </HexagonLink>
-                                    </Link>
-                                </Hexagon>
-                            </HexagonContainer>
-                        </li>
-                        <li>
-                            <HexagonContainer>
-                                <Hexagon activate={activeIndex === 5} theme={theme}>
-                                    <Link to="/" onClick={() => handleClick(5)}>
-                                        <HexagonLink activate={activeIndex === 5} theme={theme}>
-                                            <i className="fas fa-globe-asia fa-2x"></i>
-                                        </HexagonLink>
-                                    </Link>
-                                </Hexagon>
-                            </HexagonContainer>
-                        </li>
+    return (
+        <>
+            <HeaderMain className="fixed w-full py-4 z-50">
+                <div className="flex px-5 justify-between">
+                    <div className="flex">
+                        <div className="flex items-center">
+                            <div className="flex-shrink-0">
+                                <img className="h-16 w-16" src="./src/assets/icon.png"/>
+                            </div>
+                            <div className="flex-shrink-0">
+                                <HeaderTitle>Portfolio</HeaderTitle>
+                            </div>
+                            <div className="flex-shrink-0 ml-10 hidden md:flex">
+                                <ToggleTheme className="flex items-center" onClick={() => toggleTheme()}>
+                                    {theme == 'light' && <i className="fas fa-sun text-2xl"/>}
+                                    {theme == 'dark' && <i className="fas fa-moon text-2xl"/>}
+                                </ToggleTheme>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Mobile menu button */}
+                    <div className="md:hidden flex items-center">
+                        <div className="flex-shrink-0 mr-3">
+                            <ToggleTheme className="flex items-center" onClick={() => toggleTheme()}>
+                                {theme == 'light' && <i className="fas fa-sun" style={{fontSize: '24px'}}/>}
+                                {theme == 'dark' && <i className="fas fa-moon" style={{fontSize: '24px'}}/>}
+                            </ToggleTheme>
+                        </div>
+
+                        <button className="focus:outline-none focus:ring-0 active:bg-transparent"
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                {isMenuOpen ? (
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                          d="M6 18L18 6M6 6l12 12"/>
+                                ) : (
+                                    <>
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16"/>
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                              d="M4 12h16"/>
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                              d="M4 18h16"/>
+                                    </>
+                                )}
+                            </svg>
+                        </button>
+                    </div>
+
+                    {/* Desktop menu */}
+                    <HeaderNav className="hidden md:flex">
+                        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                            <ul>
+                                {items.map((item, index) => (
+                                    <li key={index} className="relative group">
+                                        <HexagonContainer>
+                                            <Hexagon activate={activeIndex === index} theme={theme}>
+                                                <Link to={`/${item == 'home' ? '' : item}`} onClick={() => handleClick(index)}>
+                                                    <HexagonLink activate={activeIndex === index} theme={theme}>
+                                                        {item == 'home' && <i className="fas fa-home fa-2x"/>}
+                                                        {item == 'about' && <i className="fas fa-user fa-2x"/>}
+                                                        {item == 'career' && <i className="fas fa-building fa-2x"/>}
+                                                        {item == 'skills' && <i className="fas fa-code fa-2x"/>}
+                                                        {item == 'project' && <i className="fas fa-layer-group fa-2x"/>}
+                                                        {item == 'contact' && <i className="fas fa-globe-asia fa-2x"/>}
+                                                    </HexagonLink>
+                                                    <p
+                                                        className="absolute bottom-0 left-0 w-full h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-400 ease">
+                                                        {item}
+                                                    </p>
+                                                </Link>
+                                            </Hexagon>
+                                        </HexagonContainer>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </HeaderNav>
+                </div>
+            </HeaderMain>
+
+            {/* Mobile Menu (Slide-in from the right) */}
+            <MobileSidebar
+                className={`fixed inset-y-0 right-0 transform ${isMenuOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 ease-in-out w-52 z-1 md:hidden`}>
+                <div className="flex flex-col p-4">
+                    <ul className="mt-28 space-y-4">
+                        {items.map((item, index) => (
+                            <li key={index} className="relative group">
+                                <Link to={`/${item == 'home' ? '' : item}`} onClick={() => handleClick(index)}
+                                      className="px-3 py-2 block">
+                                    <div className="flex items-center">
+                                        {item == 'home' && <i className="fas fa-home fa-fw"/>}
+                                        {item == 'about' && <i className="fas fa-user fa-fw"/>}
+                                        {item == 'career' && <i className="fas fa-building fa-fw"/>}
+                                        {item == 'skills' && <i className="fas fa-code fa-fw"/>}
+                                        {item == 'project' && <i className="fas fa-layer-group fa-fw"/>}
+                                        {item == 'contact' && <i className="fas fa-globe-asia fa-fw"/>}
+                                        <p className="ml-2">{item}</p>
+                                    </div>
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
-                </HeaderNav>
-            </HeaderContainer>
-        </HeaderMain>
+                </div>
+            </MobileSidebar>
+        </>
     );
 };
 

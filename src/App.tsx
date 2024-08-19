@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {ThemeProvider} from "styled-components"
 import GlobalStyle from './styles/global-style.ts'
 import {lightTheme, darkTheme} from './styles/themes.ts'
@@ -23,8 +23,8 @@ const App: React.FC = () => {
                     <Header theme={theme} toggleTheme={toggleTheme}/>
                     <main>
                         <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/user" element={<User />} />
+                            <Route path="/" element={<Home/>}/>
+                            <Route path="/about" element={<User/>}/>
                         </Routes>
                     </main>
                 </Router>

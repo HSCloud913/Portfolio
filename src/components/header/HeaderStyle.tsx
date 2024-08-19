@@ -6,47 +6,23 @@ interface HexagonProps {
 }
 
 export const HeaderMain = styled.header`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10000;
-    padding-top: 15px;
-    padding-bottom: 15px;
     background-color: ${(props) => props.theme.navBackground};
-    opacity: 0.85;
 `;
 
-export const HeaderContainer = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0 20px;
+export const HeaderTitle = styled.h1`
+    font-family: "Blacksword";
+    font-size: 30px;
 `;
 
 export const HeaderNav = styled.nav`
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 100%;
-
     ul {
-        list-style-type: none;
         margin: 0;
         padding: 0;
         display: flex;
-        align-items: center;
-        justify-content: center;
 
         li {
             margin: 0 20px;
             display: flex;
-            justify-content: center;
-            align-items: center;
-
-            &:last-child {
-                margin-right: 80px;
-            }
         }
     }
 `;
@@ -117,10 +93,6 @@ export const HexagonLink = styled.div<HexagonProps>`
 `;
 
 export const ToggleTheme = styled.div`
-    display: flex;
-    align-items: flex-end;
-    margin-right: 30px;
-
     .fa-moon {
         color: #f1c40f;
     }
@@ -128,8 +100,8 @@ export const ToggleTheme = styled.div`
     .fa-sun {
         color: #f39c12;
     }
+`;
 
-    .fa-custom-size {
-        font-size: 25px;
-    }
+export const MobileSidebar = styled.div`
+    background-color: ${(props) => props.theme.navBackground};
 `;
