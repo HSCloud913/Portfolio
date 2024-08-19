@@ -2,7 +2,7 @@ import { DefaultTheme } from 'styled-components';
 
 export const lightTheme: DefaultTheme = {
     mode: "light",
-    background: "#ffffff",
+    background: "#f3f5f7",
     navBackground: "#f3f5f7",
     linkColor: "#1a73e8",
     color: "#2B2B2B"
@@ -10,7 +10,7 @@ export const lightTheme: DefaultTheme = {
 
 export const darkTheme: DefaultTheme = {
     mode: "dark",
-    background: "#151519",
+    background: "#242629",
     navBackground: "#242629",
     linkColor: "#bb86fc",
     color: "#FFFFFF"
