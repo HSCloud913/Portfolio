@@ -108,9 +108,17 @@ const Header: React.FC<HeaderProps> = ({theme, toggleTheme}) => {
                 </div>
             </HeaderMain>
 
+            {/* Overlay */}
+            {isMenuOpen && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-50 z-30"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                ></div>
+            )}
+
             {/* Mobile Menu (Slide-in from the right) */}
             <MobileSidebar
-                className={`fixed inset-y-0 right-0 transform ${isMenuOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 ease-in-out w-52 z-1 md:hidden`}>
+                className={`fixed inset-y-0 right-0 transform ${isMenuOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 ease-in-out w-52 z-40 md:hidden`}>
                 <div className="flex flex-col p-4">
                     <ul className="mt-28 space-y-4">
                         {items.map((item, index) => (
