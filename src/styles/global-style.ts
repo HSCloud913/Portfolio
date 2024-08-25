@@ -5,6 +5,10 @@ const GlobalStyle = createGlobalStyle`
         color: ${(props) => props.theme.color};
         background-color: ${(props) => props.theme.background};
     }
+    
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
 `;
 
 export default GlobalStyle;

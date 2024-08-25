@@ -1,0 +1,99 @@
+.color-c {
+    background-color: #A8B9CC;
+}
+
+.color-c::after {
+    border-top-color: #A8B9CC;
+}
+
+.color-c::before {
+    border-bottom-color: #A8B9CC;
+}
+
+.color-c:hover {
+    fill: #A8B9CC;
+}
+
+
+.color-cpp {
+    background-color: #00599C;
+}
+
+.color-cpp::after {
+    border-top-color: #00599C;
+}
+
+.color-cpp::before {
+    border-bottom-color: #00599C;
+}
+
+.color-cpp:hover {
+    fill: #00599C;
+}
+
+
+/* web */
+.color-html {
+    background-color: #E34F26;
+}
+
+.color-html::after {
+    border-top-color: #E34F26;
+}
+
+.color-html::before {
+    border-bottom-color: #E34F26;
+}
+
+.color-html:hover {
+    fill: #E34F26;
+}
+
+.color-css {
+    background-color: #1572B6;
+}
+
+.color-css::after {
+    border-top-color: #1572B6;
+}
+
+.color-css::before {
+    border-bottom-color: #1572B6;
+}
+
+.color-css:hover {
+    fill: #1572B6;
+}
+
+.color-sass {
+    background-color: #CC6699;
+}
+
+.color-sass::after {
+    border-top-color: #CC6699;
+}
+
+.color-sass::before {
+    border-bottom-color: #CC6699;
+}
+
+.color-sass:hover {
+    fill: #CC6699;
+}
+
+
+.color-ts {
+    background-color: #3178C6;
+}
+
+.color-ts::after {
+    border-top-color: #3178C6;
+}
+
+.color-ts::before {
+    border-bottom-color: #3178C6;
+}
+
+.color-ts:hover {
+    fill: #3178C6;
+}

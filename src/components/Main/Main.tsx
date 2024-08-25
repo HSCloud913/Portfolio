@@ -1,15 +1,15 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
 import styled from 'styled-components';
-import Home from '@pages/Home.tsx'
-import About from '@pages/About.tsx'
-import Carrer from '@pages/Career.tsx'
-import Skills from '@pages/Skills.tsx'
-import Project from '@pages/Project.tsx'
-import Contact from '@pages/Contact.tsx'
+import Home from '@pages/Home/Home.tsx'
+import About from '@pages/About/About.tsx'
+import Carrer from '@pages/Career/Career.tsx'
+import Skills from '@pages/Skills/Skills.tsx'
+import Project from '@pages/Project/Project.tsx'
+import Contact from '@pages/Contact/Contact.tsx'
 
 const MainContainer = styled.main`
-    margin-top: 96px;   
+    margin-top: 96px;
 `;
 
 const Main: React.FC = () => {
