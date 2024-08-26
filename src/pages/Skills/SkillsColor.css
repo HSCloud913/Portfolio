@@ -1,3 +1,64 @@
+.animated-box {
+    position: relative;
+    border-radius: 4px;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 5px;
+        background-size: 300% 300%;
+        clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), 3px calc(100% - 3px), 3px 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+}
+
+.animated-box.in:hover:after {
+    background: linear-gradient(90deg, #4e54c8, #8f94fb);
+    animation: frame-enter 1s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 15% 0%;
+    }
+    50% {
+        background-position: 85% 100%;
+    }
+    100% {
+        background-position: 15% 0%;
+    }
+}
+
+@keyframes frame-enter {
+    0% {
+        clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), 3px calc(100% - 3px), 3px 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+    25% {
+        clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), calc(100% - 3px) calc(100% - 3px), calc(100% - 3px) 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+    50% {
+        clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, 100% 0%, 0% 0%);
+    }
+    75% {
+        -webkit-clip-path: polygon(0% 100%, 3px 100%, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 0%, 0% 0%);
+    }
+    100% {
+        -webkit-clip-path: polygon(0% 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 0% 100%);
+    }
+}
+
+.card-white-space {
+    &:before {
+        width: 0px !important;
+        height: 0px !important;
+        background: transparent !important;
+    }
+}
+
+
 .color-c {
     background-color: #A8B9CC;
 }
@@ -9,11 +70,6 @@
 .color-c::before {
     border-bottom-color: #A8B9CC;
 }
-
-.color-c:hover {
-    fill: #A8B9CC;
-}
-
 
 .color-cpp {
     background-color: #00599C;
@@ -27,8 +83,16 @@
     border-bottom-color: #00599C;
 }
 
-.color-cpp:hover {
-    fill: #00599C;
+.color-csharp {
+    background-color: #512BD4;
+}
+
+.color-csharp::after {
+    border-top-color: #512BD4;
+}
+
+.color-csharp::before {
+    border-bottom-color: #512BD4;
 }
 
 
@@ -45,10 +109,6 @@
     border-bottom-color: #E34F26;
 }
 
-.color-html:hover {
-    fill: #E34F26;
-}
-
 .color-css {
     background-color: #1572B6;
 }
@@ -61,26 +121,17 @@
     border-bottom-color: #1572B6;
 }
 
-.color-css:hover {
-    fill: #1572B6;
+.color-js {
+    background-color: #F7DF1E;
 }
 
-.color-sass {
-    background-color: #CC6699;
+.color-js::after {
+    border-top-color: #F7DF1E;
 }
 
-.color-sass::after {
-    border-top-color: #CC6699;
+.color-js::before {
+    border-bottom-color: #F7DF1E;
 }
-
-.color-sass::before {
-    border-bottom-color: #CC6699;
-}
-
-.color-sass:hover {
-    fill: #CC6699;
-}
-
 
 .color-ts {
     background-color: #3178C6;
@@ -94,6 +145,41 @@
     border-bottom-color: #3178C6;
 }
 
-.color-ts:hover {
-    fill: #3178C6;
+
+/* etc */
+.color-git {
+    background-color: #F05032;
+}
+
+.color-git::after {
+    border-top-color: #F05032;
+}
+
+.color-git::before {
+    border-bottom-color: #F05032;
+}
+
+.color-jira {
+    background-color: #0052CC;
+}
+
+.color-jira::after {
+    border-top-color: #0052CC;
+}
+
+.color-jira::before {
+    border-bottom-color: #0052CC;
+}
+
+
+.color-docker {
+    background-color: #2496ED;
+}
+
+.color-docker::after {
+    border-top-color: #2496ED;
+}
+
+.color-docker::before {
+    border-bottom-color: #2496ED;
 }

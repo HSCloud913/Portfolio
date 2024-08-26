@@ -24,14 +24,13 @@ hexStyle.hexHeight = `${hexHeightValue}px`;
 hexStyle.hexMargin = `${hexMarginValue}px`;
 hexStyle.hexBorder = `${hexBorderValue}px`;
 
-
 export const CardDescriptions = styled.ul`
     li {
         position: relative;
         padding: 0px 0px 10px 30px;
         line-height: 1.5;
     }
-    
+
     li:before {
         content: "";
         position: absolute;
@@ -42,8 +41,6 @@ export const CardDescriptions = styled.ul`
         background: #4e54c8;
     }
 `;
-
-
 
 export const HexagonContainer = styled.div`
     display: grid;
@@ -88,15 +85,6 @@ export const Hexagon = styled.div`
         bottom: 100%;
     }
 
-    &:hover {
-        background-color: #ffffff;
-    }
-
-    &:hover::after, &:hover:before {
-        border-top-color: #ffffff;
-        border-bottom-color: #ffffff;
-    }
-    
     svg {
         height: 90%;
         transition: ${hexStyle.hexTransition};
