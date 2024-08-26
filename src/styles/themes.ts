@@ -5,7 +5,7 @@ export const lightTheme: DefaultTheme = {
     background: "#f3f5f7",
     navBackground: "#f3f5f7",
     linkColor: "#1a73e8",
-    color: "#2B2B2B"
+    color: "#242629"
 }
 
 export const darkTheme: DefaultTheme = {
@@ -13,5 +13,5 @@ export const darkTheme: DefaultTheme = {
     background: "#242629",
     navBackground: "#242629",
     linkColor: "#bb86fc",
-    color: "#FFFFFF"
+    color: "#f3f5f7"
 }
