@@ -45,6 +45,8 @@ const Skills: React.FC = () => {
                                 성능이 중요한 DHCP Server 개발 경험이 있습니다.
                             </li>
                         </CardDescriptions>
+
+                        <div style={{height: '48px'}}/>
                     </div>
                 </div>
 
@@ -74,6 +76,8 @@ const Skills: React.FC = () => {
                                 크로스플랫폼(Windows, Linux) 환경에서 능숙하게 작업할 수 있습니다.
                             </li>
                         </CardDescriptions>
+
+                        <div style={{height: '24px'}}/>
                     </div>
                 </div>
 
@@ -273,7 +277,7 @@ const Skills: React.FC = () => {
                             </li>
                         </CardDescriptions>
 
-                        <div style={{height: '14px'}}/>
+                        <div style={{height: '38px'}}/>
                     </div>
                 </div>
 
@@ -326,6 +330,7 @@ const Skills: React.FC = () => {
                                 앱의 안정적인 빌드 환경을 구성해 원격 빌드를 할 수 있습니다.
                             </li>
                             <li className="card-white-space">
+                                <br/>
                                 <br/>
                                 <br/>
                             </li>

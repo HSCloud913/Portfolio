@@ -1,6 +1,7 @@
 .animated-box {
     position: relative;
     border-radius: 4px;
+    word-break: keep-all;
 
     &:after {
         content: '';
