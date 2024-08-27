@@ -1,20 +1,66 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {Container, Stars, Star} from './HomeStyle.tsx'
 
+const randomRange = (min, max) => {
+    return min + Math.floor(Math.random() * (max - min + 1));
+};
 const Home: React.FC = () => {
+    const starCount = 30;
+    const [stars, setStars] = useState([]);
+
+    const generateStars = ((starCount) => {
+        return Array.from({length: starCount}).map(() => {
+            return {
+                starTailLength: `${randomRange(500, 750) / 100}em`,
+                topOffset: `${randomRange(0, 10000) / 100}vh`,
+                fallDuration: `${randomRange(6000, 12000) / 1000}s`,
+                fallDelay: `${randomRange(0, 10000) / 1000}s`,
+            };
+        });
+    })
+
+    useEffect(() => {
+        const generatedStars = generateStars(starCount);
+        setStars(generatedStars);
+    }, [starCount]);
+
     return (
-        <div className="block w-full">
-            <p>DEVLOPER</p>
-            <p>안녕하세요 C++/C# 개발자 최성운 입니다.</p>
-            <p>저는 C++ 및 C#을 주로 사용하는 소프트웨어 개발자로, 다양한 프로젝트에서 경험을 쌓았습니다.</p>
-            <p>최신 기술 트렌드를 반영한 효율적인 코드 작성과 문제 해결 능력을 바탕으로, 복잡한 소프트웨어 문제를 해결하고 성과를 창출하는 데 열정을 가지고 있습니다.</p>
-            <p>C++/C# 프론트엔드 개발자로 구직중입니다.</p>
-            <p>회사와 제가 같이 발전해 나갈 수 있는 성장 동력이 가득하고 도전적인 회사에서 일하고 싶습니다.</p>
-            <p>Name: 최성운</p>
-            <p>Age: 2000.02.08</p>
-            <p>Phone: 010-4316-4816</p>
-            <p>Email: hscloud913@naver.com</p>
-            <p>Address: 서울시 광진구</p>
-        </div>
+        <>
+            <Container>
+                <Stars>
+                    {stars.map((starProps, index) => (
+                        <Star
+                            key={index}
+                            starTailLength={starProps.starTailLength}
+                            topOffset={starProps.topOffset}
+                            fallDuration={starProps.fallDuration}
+                            fallDelay={starProps.fallDelay}
+                        />
+                    ))}
+                </Stars>
+
+                <div className="absolute left-40 w-[900px]" style={{top: '30%'}}>
+                    <div className="relative text-left">
+                        <h2 className="text-6xl font-black">
+                            C++/C#
+                            <span className="ml-4" style={{color: '#4e54c8'}}>DEVELOPER</span>
+                        </h2>
+                    </div>
+
+                    <div className="mt-20" style={{wordBreak: 'keep-all'}}>
+                        <p className="text-3xl">안녕하세요. 7년차 개발자 최성운 입니다.</p>
+                        <br/>
+                        <p className="text-xl">C++ 및 C#을 주로 사용하는 소프트웨어 개발자로, 다양한 프로젝트에서 경험을 쌓았습니다.</p>
+                        <p className="text-xl">최신 기술 트렌드를 반영한 효율적인 코드 작성과 문제 해결 능력을 바탕으로, 복잡한 소프트웨어 문제를 해결하고 성과를 창출하는 데
+                            열정을 가지고 있습니다.</p>
+                        <br/>
+                        <p className="text-xl">현재 C++/C# 개발자로 구직중입니다.</p>
+                        <br/>
+                        <p className="text-xl">회사와 제가 같이 발전해 나갈 수 있는 성장 동력이 가득하고 도전적인 회사에서 일하고 싶습니다.</p>
+                    </div>
+                </div>
+            </Container>
+        </>
     );
 };
 
