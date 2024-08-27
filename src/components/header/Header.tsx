@@ -39,7 +39,7 @@ const Header: React.FC<HeaderProps> = ({theme, toggleTheme}) => {
                             <div className="flex-shrink-0">
                                 <HeaderTitle>Portfolio</HeaderTitle>
                             </div>
-                            <div className="flex-shrink-0 ml-10 hidden md:flex">
+                            <div className="flex-shrink-0 ml-10 hidden lg:flex">
                                 <ToggleTheme className="flex items-center" onClick={() => toggleTheme()}>
                                     {theme == 'light' && <i className="fas fa-sun text-2xl"/>}
                                     {theme == 'dark' && <i className="fas fa-moon text-2xl"/>}
@@ -49,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({theme, toggleTheme}) => {
                     </div>
 
                     {/* Mobile menu button */}
-                    <div className="md:hidden flex items-center">
+                    <div className="lg:hidden flex items-center">
                         <div className="flex-shrink-0 mr-3">
                             <ToggleTheme className="flex items-center" onClick={() => toggleTheme()}>
                                 {theme == 'light' && <i className="fas fa-sun" style={{fontSize: '24px'}}/>}
@@ -77,7 +77,7 @@ const Header: React.FC<HeaderProps> = ({theme, toggleTheme}) => {
                     </div>
 
                     {/* Desktop menu */}
-                    <HeaderNav className="hidden md:flex">
+                    <HeaderNav className="hidden lg:flex">
                         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                             <ul>
                                 {items.map((item, index) => (
@@ -118,7 +118,7 @@ const Header: React.FC<HeaderProps> = ({theme, toggleTheme}) => {
 
             {/* Mobile Menu (Slide-in from the right) */}
             <MobileSidebar
-                className={`fixed inset-y-0 right-0 transform ${isMenuOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 ease-in-out w-52 z-40 md:hidden`}>
+                className={`fixed inset-y-0 right-0 transform ${isMenuOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300 ease-in-out w-52 z-40 lg:hidden`}>
                 <div className="flex flex-col p-4">
                     <ul className="mt-28 space-y-4">
                         {items.map((item, index) => (
