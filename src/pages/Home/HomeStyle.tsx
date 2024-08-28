@@ -31,6 +31,7 @@ export const Container = styled.div`
 	min-height: 90vh;
     overflow: hidden;
 `;
+
 export const Stars = styled.div`
     position: relative;
     top: 0;

@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({theme, toggleTheme}) => {
         setIsMenuOpen(false);
     };
 
-    const items = ['home', 'about', 'career', 'skills', 'project', 'contact'];
+    const items = ['Home', 'About', 'Career', 'Skills', 'Project', 'Contact'];
 
     return (
         <>
@@ -84,14 +84,14 @@ const Header: React.FC<HeaderProps> = ({theme, toggleTheme}) => {
                                     <li key={index} className="relative group">
                                         <HexagonContainer>
                                             <Hexagon activate={activeIndex === index} theme={theme}>
-                                                <Link to={`/${item == 'home' ? '' : item}`} onClick={() => handleClick(index)}>
+                                                <Link to={`/${item == 'Home' ? '' : item}`} onClick={() => handleClick(index)}>
                                                     <HexagonLink activate={activeIndex === index} theme={theme}>
-                                                        {item == 'home' && <i className="fas fa-home fa-2x"/>}
-                                                        {item == 'about' && <i className="fas fa-user fa-2x"/>}
-                                                        {item == 'career' && <i className="fas fa-building fa-2x"/>}
-                                                        {item == 'skills' && <i className="fas fa-code fa-2x"/>}
-                                                        {item == 'project' && <i className="fas fa-layer-group fa-2x"/>}
-                                                        {item == 'contact' && <i className="fas fa-globe-asia fa-2x"/>}
+                                                        {item == 'Home' && <i className="fas fa-home fa-2x"/>}
+                                                        {item == 'About' && <i className="fas fa-user fa-2x"/>}
+                                                        {item == 'Career' && <i className="fas fa-building fa-2x"/>}
+                                                        {item == 'Skills' && <i className="fas fa-code fa-2x"/>}
+                                                        {item == 'Project' && <i className="fas fa-layer-group fa-2x"/>}
+                                                        {item == 'Contact' && <i className="fas fa-globe-asia fa-2x"/>}
                                                     </HexagonLink>
                                                     <p
                                                         className="absolute bottom-0 left-0 w-full h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-400 ease">
@@ -123,15 +123,15 @@ const Header: React.FC<HeaderProps> = ({theme, toggleTheme}) => {
                     <ul className="mt-28 space-y-4">
                         {items.map((item, index) => (
                             <li key={index} className="relative group">
-                                <Link to={`/${item == 'home' ? '' : item}`} onClick={() => handleClick(index)}
+                                <Link to={`/${item == 'Home' ? '' : item}`} onClick={() => handleClick(index)}
                                       className="px-3 py-2 block">
                                     <div className="flex items-center">
-                                        {item == 'home' && <i className="fas fa-home fa-fw"/>}
-                                        {item == 'about' && <i className="fas fa-user fa-fw"/>}
-                                        {item == 'career' && <i className="fas fa-building fa-fw"/>}
-                                        {item == 'skills' && <i className="fas fa-code fa-fw"/>}
-                                        {item == 'project' && <i className="fas fa-layer-group fa-fw"/>}
-                                        {item == 'contact' && <i className="fas fa-globe-asia fa-fw"/>}
+                                        {item == 'Home' && <i className="fas fa-home fa-fw"/>}
+                                        {item == 'About' && <i className="fas fa-user fa-fw"/>}
+                                        {item == 'Career' && <i className="fas fa-building fa-fw"/>}
+                                        {item == 'Skills' && <i className="fas fa-code fa-fw"/>}
+                                        {item == 'Project' && <i className="fas fa-layer-group fa-fw"/>}
+                                        {item == 'Contact' && <i className="fas fa-globe-asia fa-fw"/>}
                                         <p className="ml-2">{item}</p>
                                     </div>
                                 </Link>
