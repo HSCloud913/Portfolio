@@ -25,7 +25,8 @@ const Header: React.FC<HeaderProps> = ({theme, toggleTheme}) => {
         setIsMenuOpen(false);
     };
 
-    const items = ['Home', 'About', 'Career', 'Skills', 'Project', 'Contact'];
+    // const items = ['Home', 'About', 'Career', 'Skills', 'Project', 'Contact'];
+    const items = ['Home', 'About', 'Career', 'Skills', 'Contact'];
 
     return (
         <>
