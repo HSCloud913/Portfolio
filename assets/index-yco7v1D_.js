@@ -42,6 +42,7 @@ Error generating stack: `+i.message+`
     body {
         color: ${e=>e.theme.color};
         background-color: ${e=>e.theme.background};
+        font-family: 'Montserrat', 'NanumSquareNeo', sans-serif
     }
     
     ::-webkit-scrollbar {
