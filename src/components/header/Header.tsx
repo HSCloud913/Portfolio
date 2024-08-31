@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {
     HeaderMain,
-    HeaderTitle,
     HeaderNav,
     HexagonContainer,
     Hexagon,
@@ -35,16 +34,7 @@ const Header: React.FC<HeaderProps> = ({theme, toggleTheme}) => {
                     <div className="flex">
                         <div className="flex items-center">
                             <div className="flex-shrink-0">
-                                <img className="h-16 w-16" src="./src/assets/icon.png"/>
-                            </div>
-                            <div className="flex-shrink-0">
-                                <HeaderTitle>Portfolio</HeaderTitle>
-                            </div>
-                            <div className="flex-shrink-0 ml-10 hidden lg:flex">
-                                <ToggleTheme className="flex items-center" onClick={() => toggleTheme()}>
-                                    {theme == 'light' && <i className="fas fa-sun text-2xl"/>}
-                                    {theme == 'dark' && <i className="fas fa-moon text-2xl"/>}
-                                </ToggleTheme>
+                                <img className="h-16 w-16" src="./assets/icon.png"/>
                             </div>
                         </div>
                     </div>
@@ -79,14 +69,19 @@ const Header: React.FC<HeaderProps> = ({theme, toggleTheme}) => {
 
                     {/* Desktop menu */}
                     <HeaderNav className="hidden lg:flex">
+                        <ToggleTheme className="flex items-center" onClick={() => toggleTheme()}>
+                            {theme == 'light' && <i className="fas fa-sun text-2xl"/>}
+                            {theme == 'dark' && <i className="fas fa-moon text-2xl"/>}
+                        </ToggleTheme>
+
                         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                             <ul>
                                 {items.map((item, index) => (
                                     <li key={index} className="relative group">
                                         <HexagonContainer>
-                                            <Hexagon activate={activeIndex === index} theme={theme}>
+                                            <Hexagon activate={activeIndex === index ? 'true' : 'false'} theme={theme}>
                                                 <Link to={`/${item == 'Home' ? '' : item}`} onClick={() => handleClick(index)}>
-                                                    <HexagonLink activate={activeIndex === index} theme={theme}>
+                                                    <HexagonLink activate={activeIndex === index ? 'true' : 'false'} theme={theme}>
                                                         {item == 'Home' && <i className="fas fa-home fa-2x"/>}
                                                         {item == 'About' && <i className="fas fa-user fa-2x"/>}
                                                         {item == 'Career' && <i className="fas fa-building fa-2x"/>}

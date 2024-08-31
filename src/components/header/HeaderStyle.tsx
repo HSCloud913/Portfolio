@@ -1,17 +1,12 @@
 import styled from 'styled-components';
 
 interface HexagonProps {
-    activate?: boolean;
+    activate: 'true' | 'false';
     theme: 'light' | 'dark';
 }
 
 export const HeaderMain = styled.header`
     background-color: ${(props) => props.theme.navBackground};
-`;
-
-export const HeaderTitle = styled.h1`
-    font-family: "Blacksword";
-    font-size: 30px;
 `;
 
 export const HeaderNav = styled.nav`
@@ -74,7 +69,7 @@ export const Hexagon = styled.div<HexagonProps>`
         transform: rotate(-60deg);
     }
 
-    ${(props) => props.activate && `
+    ${(props) => props.activate === 'true' && `
         background-image: linear-gradient(90deg, #4e54c8, #8f94fb);
     `}
 `;
@@ -86,7 +81,7 @@ export const HexagonLink = styled.div<HexagonProps>`
     height: 100%;
     width: 100%;
     text-decoration: none;
-    color: ${(props) => props.activate ? "#ffffff" : props.theme === 'light' ? "#ffffffdd" : "#ffffff99"};
+    color: ${(props) => props.activate === 'true' ? "#ffffff" : props.theme === 'light' ? "#ffffffdd" : "#ffffff99"};
     position: relative;
     z-index: 1;
     transition: all 400ms ease;

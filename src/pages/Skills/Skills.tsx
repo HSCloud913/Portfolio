@@ -77,6 +77,7 @@ const Skills: React.FC = () => {
                             </li>
                         </CardDescriptions>
 
+                        <br/>
                         <div style={{height: '24px'}}/>
                     </div>
                 </div>
@@ -107,6 +108,9 @@ const Skills: React.FC = () => {
                                 Refit 라이브러리를 사용하여 인터페이스 기반의 간결하고 직관적인 API 호출을 구현한 경험이 있습니다.
                             </li>
                         </CardDescriptions>
+
+                        <br/>
+                        <br/>
                     </div>
                 </div>
             </div>
@@ -203,6 +207,7 @@ const Skills: React.FC = () => {
                                 DOM 조작 및 이벤트 핸들링을 통해 사용자 인터페이스의 동적 업데이트를 구현이 가능합니다.
                             </li>
                             <li className="card-white-space">
+                                <br/>
                                 <br/>
                                 <br/>
                                 <br/>
@@ -304,6 +309,8 @@ const Skills: React.FC = () => {
                                 대시보드와 보고서 기능을 활용하여 팀의 작업 진행 상황, 버그 추세, 완료된 작업 등을 분석하고, 프로젝트의 상태 모니터링이 가능합니다.
                             </li>
                         </CardDescriptions>
+
+                        <br/>
                     </div>
                 </div>
 

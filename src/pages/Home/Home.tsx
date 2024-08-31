@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Stars, Star} from './HomeStyle.tsx'
+import {Container, StarProps, Stars, Star} from './HomeStyle.tsx'
 
 const randomRange = (min: number, max: number) => {
     return min + Math.floor(Math.random() * (max - min + 1));
@@ -7,9 +7,9 @@ const randomRange = (min: number, max: number) => {
 
 const Home: React.FC = () => {
     const starCount = 30;
-    const [stars, setStars] = useState([]);
+    const [stars, setStars] = useState<StarProps[]>([]);
 
-    const generateStars = ((starCount: any) => {
+    const generateStars = ((starCount: number): StarProps[] => {
         return Array.from({length: starCount}).map(() => {
             return {
                 starTailLength: `${randomRange(500, 750) / 100}em`,
@@ -22,7 +22,6 @@ const Home: React.FC = () => {
 
     useEffect(() => {
         const generatedStars = generateStars(starCount);
-        // @ts-ignore
         setStars(generatedStars);
     }, [starCount]);
 

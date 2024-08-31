@@ -41,7 +41,7 @@ export const Stars = styled.div`
     transform: rotate(-45deg);
 `;
 
-interface StarProps {
+export interface StarProps {
 	starTailLength: string;
 	topOffset: string;
 	fallDuration: string;
