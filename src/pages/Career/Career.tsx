@@ -128,7 +128,7 @@ const Career: React.FC = () => {
                                     2017.09
                                 </Timestamp>
                                 <Title>
-                                    (주) 클로닉스 입사
+                                    C사 입사
                                 </Title>
                                 <Content>
                                     개발팀 사원
