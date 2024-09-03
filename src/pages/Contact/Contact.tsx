@@ -1,5 +1,5 @@
 import React from 'react';
-import {HexagonWrapper, Hexagon} from './ContactStyle.tsx'
+import {Description, HexagonWrapper, Hexagon} from './ContactStyle.tsx'
 
 const Contact: React.FC = () => {
     const instagramClick = () => {
@@ -15,8 +15,24 @@ const Contact: React.FC = () => {
             <div className="relative py-20 text-center">
                 <h2 className="text-5xl font-black">
                     CONTACT
-                    <span className="ml-2" style={{color: '#4e54c8'}}>US</span>
                 </h2>
+            </div>
+
+            <div className="flex justify-center">
+                <div className="grid grid-cols-1">
+                    <Description className="ml-[40px] text-xl">
+                        Email:
+                        <span className="ml-2">hscloud913@naver.com</span>
+                    </Description>
+                    <Description className="ml-[40px] text-xl">
+                        Instagram:
+                        <span className="ml-2">https://www.instagram.com/c__nebulae</span>
+                    </Description>
+                    <Description className="ml-[40px] text-xl">
+                        Github:
+                        <span className="ml-2">https://github.com/HSCloud913</span>
+                    </Description>
+                </div>
             </div>
 
             <div className="flex flex-wrap max-w-[800px] mx-auto mt-20 gap-4">
