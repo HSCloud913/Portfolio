@@ -24,10 +24,6 @@ const About: React.FC = () => {
                         <span className="ml-2">최성운</span>
                     </Description>
                     <Description className="ml-[40px] text-xl">
-                        Age:
-                        <span className="ml-2">2000.02.08</span>
-                    </Description>
-                    <Description className="ml-[40px] text-xl">
                         Email:
                         <span className="ml-2">hscloud913@naver.com</span>
                     </Description>
