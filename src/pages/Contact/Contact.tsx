@@ -22,15 +22,15 @@ const Contact: React.FC = () => {
                 <div className="grid grid-cols-1">
                     <Description className="ml-[40px] text-xl">
                         Email:
-                        <span className="ml-2">hscloud913@naver.com</span>
+                        <span className="ml-2 break-all">hscloud913@naver.com</span>
                     </Description>
                     <Description className="ml-[40px] text-xl">
                         Instagram:
-                        <span className="ml-2">https://www.instagram.com/c__nebulae</span>
+                        <span className="ml-2 break-all">https://www.instagram.com/c__nebulae</span>
                     </Description>
                     <Description className="ml-[40px] text-xl">
                         Github:
-                        <span className="ml-2">https://github.com/HSCloud913</span>
+                        <span className="ml-2 break-all">https://github.com/HSCloud913</span>
                     </Description>
                 </div>
             </div>
